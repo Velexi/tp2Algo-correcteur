@@ -1,6 +1,8 @@
 package com.company;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
@@ -30,25 +32,22 @@ class Dictionnaire {
         static void parse(Hashtable<List<String>, List<String>> dico, String path) throws IOException {
             BufferedReader reader = new BufferedReader(new FileReader(path));
 
-            String line;
+            String ligne;
             while (reader.ready()) {
-                line = reader.readLine();
-                char[] arr = bubbleSort(line);
-                List<String> e = new ArrayList<>();
-                e.add(Arrays.toString(arr));
-                addOnDico(dico, line, e);
+                ligne = reader.readLine();
+                char[] array = bubbleSort(ligne);
+                List<String> listDeCaractereArrangeParOrdreAlphabetique = new ArrayList<>();
+                listDeCaractereArrangeParOrdreAlphabetique.add(Arrays.toString(array));
+                addOnDico(dico, ligne, listDeCaractereArrangeParOrdreAlphabetique);
             }
         }
 
         private static void addOnDico(Hashtable<List<String>, List<String>> dico, String line, List<String> listDeMotsExistant) {
-
-            if (dico.containsKey(listDeMotsExistant)) {
-                dico.get(listDeMotsExistant).add(line);
-            } else {
+            if (!dico.containsKey(listDeMotsExistant)) {
                 List<String> nouveauxMot = new ArrayList<>();
-                nouveauxMot.add(line);
                 dico.put(listDeMotsExistant, nouveauxMot);
             }
+            dico.get(listDeMotsExistant).add(line);
         }
 
         private static char[] bubbleSort(String line) {
