@@ -11,7 +11,7 @@ import java.util.List;
 
 class Dictionnaire {
 
-    private Hashtable<List<String>, List<String>> dictionnaire = new Hashtable<>();
+    private static Hashtable<List<String>, List<String>> dictionnaire = new Hashtable<>();
 
     Dictionnaire(String path) throws IOException {
         initializeDico(path);
@@ -21,8 +21,13 @@ class Dictionnaire {
         Parser.parse(dictionnaire, path);
     }
 
-    Hashtable<List<String>, List<String>> getDictionnaire() {
+    static Hashtable<List<String>, List<String>> getDictionnaire() {
         return dictionnaire;
+    }
+
+    public static boolean contains(String mot){
+        char[] motArranger = Parser.bubbleSort(mot);
+        return dictionnaire.contains(motArranger);
     }
 
 
