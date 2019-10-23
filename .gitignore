@@ -1,5 +1,6 @@
 
 # Default ignored files
-/workspace.xml
+/.idea/
 $GIT_DIR/info/exclude
-tp2Algo-correcteur/out
+/tp2Algo-correcteur/out
+/test.txt
