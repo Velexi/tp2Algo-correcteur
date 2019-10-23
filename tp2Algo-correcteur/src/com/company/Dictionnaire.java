@@ -27,9 +27,10 @@ class Dictionnaire {
 
     public static boolean contains(String mot){
         char[] motArranger = Parser.bubbleSort(mot);
-        return dictionnaire.contains(motArranger);
+        List<String> a = new ArrayList<>();
+        a.add(Arrays.toString(motArranger));
+        return dictionnaire.get(a).contains(mot);
     }
-
 
     private static class Parser {
 
