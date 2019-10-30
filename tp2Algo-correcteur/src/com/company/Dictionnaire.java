@@ -21,16 +21,17 @@ class Dictionnaire {
         Parser.parse(dictionnaire, path);
     }
 
-    static Hashtable<List<String>, List<String>> getDictionnaire() {
+    public Hashtable<List<String>, List<String>> getDictionnaire() {
         return dictionnaire;
     }
 
-    public static boolean contains(String mot){
+    public  boolean contains(String mot){
         char[] motArranger = Parser.bubbleSort(mot);
         List<String> a = new ArrayList<>();
         a.add(Arrays.toString(motArranger));
         return dictionnaire.get(a).contains(mot);
     }
+
 
     private static class Parser {
 
@@ -72,4 +73,6 @@ class Dictionnaire {
         }
 
     }
+
+
 }
