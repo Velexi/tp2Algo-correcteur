@@ -13,6 +13,9 @@ public class DictionnaireTrigramme {
         createTD(trigramme);
     }
 
+    public void appendTrigDic(String trigramme) throws IOException {
+        createTD(trigramme);
+    }
     public void createTD(String trigramme) throws IOException {
         Dictionnaire d = new Dictionnaire("tp2Algo-correcteur/src/com/company/dico.txt");
         Set<List<String>> set = d.getDictionnaire().keySet();
@@ -28,7 +31,9 @@ public class DictionnaireTrigramme {
                     } else {
                         List<String> mots = new ArrayList<>();
                         mots.add(mot);
-                        TD.get(trigramme).addAll(mots);
+                        for(String string :mots){
+                            if(!TD.get(trigramme).contains(string)) TD.get(trigramme).add(string);
+                        }
                     }
                 }
             }
@@ -40,10 +45,18 @@ public class DictionnaireTrigramme {
     }
 
     public static void main(String args[]) throws IOException {
-        DictionnaireTrigramme td = new DictionnaireTrigramme("onn");
-        List<String> tl = td.getTD().get("onn");
+        String trig = "acc";
+        String trig2 = "<Ad";
+        DictionnaireTrigramme td = new DictionnaireTrigramme(trig);
+        td.appendTrigDic(trig2);
+        List<String> tl = td.getTD().get(trig);
+        List<String> tl2 = td.getTD().get(trig2);
         for(String mots : tl){
             System.out.println(mots);
+        }
+        System.out.println("===================");
+        for (String mo : tl2){
+            System.out.println(mo);
         }
     }
 }

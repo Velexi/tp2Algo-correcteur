@@ -5,6 +5,7 @@ import java.util.*;
 public class Trigramme {
     private Hashtable<String, List<String>> trigramme = new Hashtable<>();
     private List<String> L = new ArrayList<>() ;
+    private String mot;
 
 
     public Trigramme(String mot){
