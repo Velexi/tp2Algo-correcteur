@@ -29,7 +29,7 @@ class Dictionnaire {
         char[] motArranger = Parser.bubbleSort(mot);
         List<String> a = new ArrayList<>();
         a.add(Arrays.toString(motArranger));
-        return dictionnaire.get(a).contains(mot);
+        return dictionnaire.containsValue(mot);
     }
 
 
@@ -74,5 +74,13 @@ class Dictionnaire {
 
     }
 
+    public static void main(String[] args) throws IOException {
+        Dictionnaire d = new Dictionnaire("tp2Algo-correcteur/src/com/company/dico.txt");
 
+        long startTime = System.nanoTime();
+        System.out.println(d.contains("util"));
+        long endTime = System.nanoTime();
+        long elapsedTime = endTime - startTime;
+        System.out.println(elapsedTime/100000);
+    }
 }
