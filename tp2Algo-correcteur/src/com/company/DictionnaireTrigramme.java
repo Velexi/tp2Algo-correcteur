@@ -31,8 +31,6 @@ public class DictionnaireTrigramme {
                     ArrayList<String> mots = new ArrayList<>();
                     mots.add(mot);
                     TD.get(trigramme).addAll(mots);
-
-
                 }
             }
         }
@@ -44,15 +42,15 @@ public class DictionnaireTrigramme {
     }
 
     public static void main(String[] args) throws IOException {
-        long startTime = System.nanoTime();
+        long startTime = System.currentTimeMillis();
         dico d = new dico("tp2Algo-correcteur/src/com/company/dico.txt");
-        DictionnaireTrigramme td = new DictionnaireTrigramme("cis",d);
-        List<String> mots = td.getTD().get("cis");
+        DictionnaireTrigramme td = new DictionnaireTrigramme("acc",d);
+        List<String> mots = td.getTD().get("acc");
         for(String mot : mots){
             System.out.println(mot);
         }
-        long endTime = System.nanoTime();
+        long endTime = System.currentTimeMillis();
         long elapsedTime = endTime - startTime;
-        System.out.println(elapsedTime/100000);
+        System.out.println(elapsedTime);
     }
 }
